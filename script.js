@@ -60,7 +60,6 @@ document.querySelector('.remove-row-btn').addEventListener('click', function() {
         for (let i = 0; i < colAmount; i++) {
             gridContainer.removeChild(gridContainer.lastElementChild)
         }
-        console.log('Number of Cells: ' + cellCounter);
         colAmount = 0
         gridContainer.style.gridTemplateColumns = null
     }
@@ -70,6 +69,28 @@ document.querySelector('.remove-row-btn').addEventListener('click', function() {
         for (let i = 0; i < colAmount; i++) {
             gridContainer.removeChild(gridContainer.lastElementChild)
         }
-        console.log('Number of Cells: ' + cellCounter);
+    }
+})
+
+document.querySelector('.remove-col-btn').addEventListener('click', function() {
+    if (colAmount == 0) {
+        alert('There are no more columns!')
+    }
+    else if (colAmount == 1) {
+        cellCounter = cellCounter - rowAmount
+        colAmount = colAmount - 1
+        for (let i = 0; i < rowAmount; i++) {
+            gridContainer.removeChild(gridContainer.lastElementChild)
+        }
+        rowAmount = 0
+        gridContainer.style.gridTemplateColumns = `repeat(${colAmount}, 1fr)`
+    }
+    else {
+        cellCounter = cellCounter - rowAmount
+        colAmount = colAmount - 1
+        for (let i = 0; i < rowAmount; i++) {
+            gridContainer.removeChild(gridContainer.lastElementChild)
+        }
+        gridContainer.style.gridTemplateColumns = `repeat(${colAmount}, 1fr)`
     }
 })
