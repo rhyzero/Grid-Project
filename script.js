@@ -17,7 +17,7 @@ document.querySelector('.add-row-btn').addEventListener('click', function() {
         rowAmount = rowAmount + 1
         gridContainer.appendChild(newCell.cloneNode(true))
     }
-    else if (colAmount >= 2) {
+    else {
         rowAmount = rowAmount + 1
         cellCounter = cellCounter + colAmount
         for (let i = 0; i < colAmount; i++){
@@ -47,5 +47,29 @@ document.querySelector('.add-col-btn').addEventListener('click', function() {
         for (let i = 0; i < rowAmount; i++){
             gridContainer.appendChild(newCell.cloneNode(true))
         }
+    }
+})
+
+document.querySelector('.remove-row-btn').addEventListener('click', function() {
+    if (rowAmount == 0) {
+        alert('There are no more rows!')
+    }
+    else if (rowAmount == 1) {
+        cellCounter = cellCounter - colAmount
+        rowAmount = rowAmount - 1
+        for (let i = 0; i < colAmount; i++) {
+            gridContainer.removeChild(gridContainer.lastElementChild)
+        }
+        console.log('Number of Cells: ' + cellCounter);
+        colAmount = 0
+        gridContainer.style.gridTemplateColumns = null
+    }
+    else {
+        cellCounter = cellCounter - colAmount
+        rowAmount = rowAmount - 1
+        for (let i = 0; i < colAmount; i++) {
+            gridContainer.removeChild(gridContainer.lastElementChild)
+        }
+        console.log('Number of Cells: ' + cellCounter);
     }
 })
