@@ -1,9 +1,27 @@
 let cellCounter = 0
 let rowAmount = 0
 let colAmount = 0
-let newCell = document.createElement('div')
+const newCell = document.createElement('div')
+newCell.setAttribute('style', 'background-color: white')
 newCell.classList.add('cell')
-let gridContainer = document.querySelector('.grid-container')
+const gridContainer = document.querySelector('.grid-container')
+const colorMenu = document.querySelector('.color-menu')
+const colorBtn = colorMenu.querySelector('.color-btn')
+const colors = colorMenu.querySelectorAll('.color')
+const btnText = colorMenu.querySelector('.btn-text')
+
+colors.forEach(color => {
+    color.addEventListener('click', function() {
+        let selectedColor = color.querySelector('.color-text').innerText
+        btnText.innerText = selectedColor
+        colorMenu.classList.toggle('active')
+        console.log(selectedColor);
+    })
+})
+
+colorBtn.addEventListener('click', function() {
+    colorMenu.classList.toggle('active')
+})
 
 document.querySelector('.add-row-btn').addEventListener('click', function() {
     if (colAmount == 0) {
@@ -93,4 +111,51 @@ document.querySelector('.remove-col-btn').addEventListener('click', function() {
         }
         gridContainer.style.gridTemplateColumns = `repeat(${colAmount}, 1fr)`
     }
+})
+
+document.querySelector('.change-all-color-btn').addEventListener('click', function() {
+    if (colorBtn.innerText === 'Select your color') {
+        alert('Pick a color!')
+    }
+    else {
+        document.querySelectorAll('.cell').forEach(cell => {
+            cell.style.backgroundColor = `${colorBtn.innerText}`.split(' ').join('')
+            cell.classList.remove('selected')
+        })
+    }
+})
+
+document.querySelector('.change-color-btn').addEventListener('click', function() {
+    if (colorBtn.innerText === 'Select your color') {
+        alert('Pick a color!')
+    }
+    else {
+        document.querySelectorAll('.selected').forEach(cell => {
+            cell.style.backgroundColor = `${colorBtn.innerText}`.split(' ').join('')
+            cell.classList.remove('selected')
+        })
+    }
+})
+
+document.querySelector('.reset-all-color-btn').addEventListener('click', function() {
+    document.querySelectorAll('.cell').forEach(cell => {
+        cell.style.backgroundColor = 'white'
+        cell.classList.remove('selected')
+    })
+})
+
+document.querySelector('.change-remaining-btn').addEventListener('click', function() {
+    gridContainer.querySelectorAll('[style="background-color: white"] , [style="background-color: white;"]').forEach(cell => {
+        cell.style.backgroundColor = `${colorBtn.innerText}`.split(' ').join('')
+        cell.classList.remove('selected')
+    })
+})
+
+gridContainer.addEventListener('click', function(e) {
+    console.clear();
+    const cell = e.target.closest('.cell')
+    if (cell.className === e.target.className){
+        console.log(cell.classList);
+        cell.classList.toggle('selected')
+    } 
 })

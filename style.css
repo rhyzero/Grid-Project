@@ -1,6 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Libre+Franklin:wght@100;300;400;500;700&family=Roboto:wght@100;300;400;500&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+body {
+    background-color: #1B1B1E;
 }
 
 .container {
@@ -11,23 +18,108 @@
 }
 
 .menu-container {
-    background-color: rgba(209, 209, 209, 0.733);
+    background-color: #6D676E;
     min-height: 96px;
-    width: 50vw;
+    width: 35vw;
     display: flex;
     margin: 20px;
     justify-content: space-around;
     border-radius: 1em;
+    align-items: center;
+    padding: 20px;
 }
 
-.btn {
+.main-menu {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.color-picker {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.color-picker .btn {
+    border-radius: 1em;
+    background-color: #dbdbdb;
     height: 50px;
-    width: 100px;
+    width: 125px;
+    padding: 0 10px 0 10px;
+    cursor: pointer;
+    text-align: center;
+    border-style: none;
+}
+
+.btn:hover, .btn:focus, .btn:active{
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+}
+
+.main-menu .btn {
+    height: 75px;
+    width: 150px;
+    cursor: pointer;
     align-self: center;
+    border-style: none;
+    border-radius: 1em;
+    background-color: #dbdbdb;
+}
+
+.color-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #dbdbdb;
+    border-radius: 1em;
+    height: 50px;
+    width: 258px;
+    cursor: pointer;
+}
+
+.color {
+    display: flex;
+    height: 50px;
+    cursor: pointer;
+    padding: 0 16px;
+    border-radius: 1em;
+    align-items: center;
+    background-color: white;
+}
+
+.color-menu {
+    grid-column: 1 / 3;
+}
+
+.color-menu .color-options {
+    display: none;
+    background-color: white;
+    width: 258px;
+    position: absolute;
+    padding: 20px;
+    margin-top: 5px;
+    border-radius: 1em;
+    z-index: 1;
+}
+
+.color-menu.active .color-options {
+    display: block;
+}
+
+.color {
+    display: flex;
+    justify-content: center;
+}
+
+.color:hover {
+    background-color: #f2f2f2;
 }
 
 .grid-container {
-    background-color: rgba(209, 209, 209, 0.733);
+    background-color: #6d676ead;
     padding: 5px;
     display: grid;
     gap: 5px;
@@ -42,7 +134,9 @@
     height: 100px;
     width: 100px;
     border-radius: 1rem;
-    border: 1px solid rgb(255, 174, 174);
-    background-color: rgb(255, 255, 255);
     justify-self: center;
+}
+
+.selected {
+    border: 3px solid black;
 }
