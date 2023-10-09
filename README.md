@@ -4,3 +4,6 @@ For this assignment, using HTML, CSS, and Javascript, we had to make a website t
 
 # Name and Usernames
 Jacky Chen - rhyzero
+
+#Website Link
+https://rhyzero.github.io/Grid-Project/
